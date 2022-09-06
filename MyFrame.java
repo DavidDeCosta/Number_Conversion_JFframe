@@ -95,7 +95,6 @@ public class MyFrame extends JFrame
         spinnerValueLabel = new JLabel("2");
 
 
-
         panel_3.add(spinnerTitleLabel,BorderLayout.NORTH);
         panel_3.add(spinner,BorderLayout.CENTER);
 
@@ -154,21 +153,8 @@ public class MyFrame extends JFrame
 
         spinnerValueLabel.setText("" + n);
 
+        myConversion();
 
-        String convertedNum;                               
-        String str1;
-        str1 = textField_1.getText().trim();                              //str1 hold the text in textfield1
-        if(textField_1.getText().trim().isEmpty())                        //if textfield1 is empty set texfield2 to empty
-        {
-            textField_2.setText("");
-        }
-        else
-        {
-//        int k;
-//        k = (Integer) spinner.getModel().getValue();                // n hold the value of the spinner
-        convertedNum = convertNumber(str1, n);                      // convertedNum is the new string number
-        textField_2.setText(convertedNum);                          // puts the convertedNum into the textfield2
-        }
     }
 
 
@@ -180,51 +166,39 @@ public class MyFrame extends JFrame
 
     @Override
     public void insertUpdate(DocumentEvent e) {
-        
-        String convertedNum;
-        String str1;
-        str1 = textField_1.getText().trim();
-        int n;
 
-        n = (Integer) spinner.getModel().getValue();
-        convertedNum = convertNumber(str1, n);
-        textField_2.setText(convertedNum);
-
+        myConversion();
 
     }
 
     @Override
     public void removeUpdate(DocumentEvent e) {
         
-        String convertedNum;                               
-        String str1;
-        str1 = textField_1.getText().trim();                              //str1 hold the text in textfield1
+
         if(textField_1.getText().trim().isEmpty())                        //if textfield1 is empty set texfield2 to empty
         {
             textField_2.setText("");
         }
         else
         {
-        int n;
-
-        n = (Integer) spinner.getModel().getValue();                // n hold the value of the spinner
-        convertedNum = convertNumber(str1, n);                      // convertedNum is the new string number
-        textField_2.setText(convertedNum);                          // puts the convertedNum into the textfield2
+            myConversion();
         }
     }
 
     @Override
     public void changedUpdate(DocumentEvent e) {
         
+    }
 
+    void myConversion()
+    {
         String convertedNum;
         String str1;
         str1 = textField_1.getText().trim();
-        int n;
 
+        int n;
         n = (Integer) spinner.getModel().getValue();
         convertedNum = convertNumber(str1, n);
         textField_2.setText(convertedNum);
-        
     }
 }

@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;                                                         // for Dimension
 import java.awt.event.*;
 
+
 public class MyFrame extends JFrame 
                     implements ChangeListener, ActionListener, DocumentListener
 {
@@ -53,12 +54,12 @@ public class MyFrame extends JFrame
     public void addPanels()
     {
         
-        panel_1 = new JPanel();
+/*      panel_1 = new JPanel();
         panel_1.setBackground(Color.GREEN);
         panel_1.setPreferredSize(new Dimension(50,50));
         
         add(panel_1,BorderLayout.NORTH);
-
+*/
         panel_2 = new JPanel();
         panel_2.setBackground(Color.RED);
         panel_2.setPreferredSize(new Dimension(50,50));
@@ -71,12 +72,12 @@ public class MyFrame extends JFrame
         
         add(panel_3,BorderLayout.EAST);
 
-        panel_4 = new JPanel();
+/*      panel_4 = new JPanel();
         panel_4.setBackground(Color.BLUE);
         panel_4.setPreferredSize(new Dimension(50,50));
         
         add(panel_4,BorderLayout.WEST);
-
+*/
         panel_5 = new JPanel();
         panel_5.setBackground(Color.PINK);
         panel_5.setPreferredSize(new Dimension(50,50));
@@ -101,6 +102,7 @@ public class MyFrame extends JFrame
 
         label_1 = new JLabel("Enter Number: ");
         textField_1 = new JTextField();
+
         textField_1.setPreferredSize(new Dimension(150,50));
         textField_1.setFont(new Font("Times Roman", Font.PLAIN,18));
         textField_1.setBackground(Color.WHITE);
@@ -131,8 +133,8 @@ public class MyFrame extends JFrame
 
 
     /*
-    In: Takes in an integer
-    Out: Returns the String version of the integer
+    In: Takes in an String and radix
+    Out: Returns the String version of the integer thats been changed determined by the radix
      */
     String convertNumber(String originalNum, int rad){
 
@@ -192,13 +194,23 @@ public class MyFrame extends JFrame
 
     void myConversion()
     {
+        try{
         String convertedNum;
         String str1;
+        int testingIfInt;
         str1 = textField_1.getText().trim();
-
+        
+        testingIfInt = Integer.parseInt(str1);
+    
         int n;
         n = (Integer) spinner.getModel().getValue();
         convertedNum = convertNumber(str1, n);
         textField_2.setText(convertedNum);
-    }
+        }
+        catch(NumberFormatException e)
+            {
+            textField_2.setText("Error - not a numeral!");
+//            System.out.println("Not a Numeral!");
+            }
+        }
 }
